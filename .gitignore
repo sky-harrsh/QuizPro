@@ -1,0 +1,32 @@
+# ─── Compiled class files ────────────────────────────────────
+*.class
+
+# ─── Tomcat runtime (do NOT push the whole server) ───────────
+apache-tomcat-*/
+
+# ─── Java build artifacts ─────────────────────────────────────
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# ─── IDE / editor files ───────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+
+# ─── Logs and temp files ──────────────────────────────────────
+*.log
+compile_errors.txt
+tomcat_cmd.txt
+
+# ─── OS junk ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
