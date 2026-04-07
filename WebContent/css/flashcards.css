@@ -1,0 +1,456 @@
+/* flashcards.css */
+body.flashcard-page {
+    /* Main body background handled by dashboard base or theme gradient */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.flashcard-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.flashcard-nav-bar {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flashcard-category-selector select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+}
+
+.flashcard-category-selector select option {
+    background: #1a1a4e;
+    color: white;
+}
+
+.flashcard-progress-bar {
+    width: 100%;
+    max-width: 640px;
+    background: rgba(255, 255, 255, 0.1);
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.flashcard-progress-fill {
+    height: 100%;
+    background: #6af5b4;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.flashcard-progress-text {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.flashcard-scene {
+    width: 100%;
+    max-width: 640px;
+    height: 380px;
+    perspective: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.flashcard-scene.known-pulse {
+    animation: knownPulse 0.4s ease-out;
+}
+
+.flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.flashcard-front {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(20px);
+}
+
+.flashcard-back {
+    background: linear-gradient(135deg,
+            rgba(102, 126, 234, 0.25),
+            rgba(118, 75, 162, 0.25));
+    border: 1px solid rgba(102, 126, 234, 0.40);
+    backdrop-filter: blur(20px);
+    transform: rotateY(180deg);
+    overflow-y: auto;
+}
+
+.flashcard-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e293b;
+}
+
+/* Category badge colors */
+.badge-core {
+    background: #67e8f9;
+}
+
+.badge-oop {
+    background: #86efac;
+}
+
+.badge-advanced {
+    background: #c4b5fd;
+}
+
+.badge-misc {
+    background: #fbbf24;
+}
+
+.flashcard-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.flashcard-question {
+    font-size: 22px;
+    color: white;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.flashcard-code {
+    background: rgba(0, 0, 0, 0.5);
+    color: #a78bfa;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.flashcard-hint {
+    position: absolute;
+    bottom: 20px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+}
+
+.flashcard-answer-correct {
+    font-size: 22px;
+    color: #86efac;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.flashcard-options {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.flashcard-option {
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.flashcard-option.correct {
+    background: rgba(134, 239, 172, 0.2);
+    border: 1px solid #86efac;
+    color: white;
+}
+
+.flashcard-explanation {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+}
+
+.flashcard-difficulty {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.diff-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: background 0.2s;
+}
+
+.diff-dot.active {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.flashcard-controls {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.fc-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.fc-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.fc-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.fc-btn-known {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    color: #86efac;
+}
+
+.fc-btn-known:hover {
+    background: rgba(16, 185, 129, 0.4);
+}
+
+.flashcard-footer-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.stats-panel {
+    position: fixed;
+    right: -380px;
+    top: 0;
+    width: 360px;
+    height: 100vh;
+    background: rgba(15, 15, 40, 0.97);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 32px 24px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow-y: auto;
+    color: white;
+    box-sizing: border-box;
+}
+
+.stats-panel.open {
+    right: 0;
+}
+
+.stats-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.completion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.completion-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.completion-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    min-width: 350px;
+}
+
+.completion-card h2 {
+    color: #fde047;
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.completion-stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.completion-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.completion-btn {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.completion-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.completion-btn-primary {
+    background: #3b82f6;
+}
+
+.completion-btn-primary:hover {
+    background: #2563eb;
+}
+
+@keyframes knownPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(134, 239, 172, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(134, 239, 172, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(134, 239, 172, 0);
+    }
+}
+
+/* Donut chart pure CSS */
+.donut-chart {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#10b981 var(--p, 0%), rgba(255, 255, 255, 0.1) 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.donut-inner {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #0f0f28;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media (max-width: 640px) {
+    .flashcard-scene {
+        height: 450px;
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+        padding: 20px;
+    }
+
+    .flashcard-question {
+        font-size: 18px;
+    }
+
+    .fc-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}

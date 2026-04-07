@@ -1,0 +1,268 @@
+/* themes.css */
+body.theme-dark {
+    background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 100%) !important;
+    color: #f8fafc;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body.theme-dark .nav,
+body.theme-dark .landing-nav {
+    background-color: rgba(10, 10, 46, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.theme-dark .nav a,
+body.theme-dark .nav button {
+    color: #f8fafc;
+}
+
+body.theme-dark .btn-primary {
+    background-color: #667eea !important;
+    border-color: #667eea !important;
+    color: white !important;
+}
+
+body.theme-dark .nav span {
+    color: white;
+}
+
+body.theme-ocean {
+    background: linear-gradient(135deg, #0d3b6e 0%, #1a5276 100%) !important;
+    color: #f8fafc;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body.theme-ocean .nav,
+body.theme-ocean .landing-nav {
+    background-color: rgba(13, 59, 110, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.theme-ocean .nav a,
+body.theme-ocean .nav button {
+    color: #f8fafc;
+}
+
+body.theme-ocean .btn-primary {
+    background-color: #00b4d8 !important;
+    border-color: #00b4d8 !important;
+    color: white !important;
+}
+
+body.theme-ocean .nav span {
+    color: white;
+}
+
+body.theme-ocean .blob-1 {
+    background: #0077b6 !important;
+}
+
+body.theme-ocean .blob-2 {
+    background: #0096c7 !important;
+}
+
+body.theme-ocean .blob-3 {
+    background: #48cae4 !important;
+}
+
+body.theme-forest {
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%) !important;
+    color: #f8fafc;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body.theme-forest .nav,
+body.theme-forest .landing-nav {
+    background-color: rgba(27, 67, 50, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.theme-forest .nav a,
+body.theme-forest .nav button {
+    color: #f8fafc;
+}
+
+body.theme-forest .btn-primary {
+    background-color: #52b788 !important;
+    border-color: #52b788 !important;
+    color: white !important;
+}
+
+body.theme-forest .nav span {
+    color: white;
+}
+
+body.theme-forest .blob-1 {
+    background: #2d6a4f !important;
+}
+
+body.theme-forest .blob-2 {
+    background: #40916c !important;
+}
+
+body.theme-forest .blob-3 {
+    background: #52b788 !important;
+}
+
+/* Dashboard Java Wallpaper overlay */
+body.dashboard-body {
+    position: relative;
+    z-index: 1;
+}
+
+body.dashboard-body::before {
+    content: "{  }  <  >  ;  //  {  }  <  >  ;  //";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: -1;
+    font-family: monospace;
+    font-size: 100px;
+    color: white;
+    line-height: 1.2;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 150px, rgba(255, 255, 255, 0.01) 150px, rgba(255, 255, 255, 0.01) 300px);
+    white-space: pre-wrap;
+}
+
+/* Critical Constraint: white cards stay readable */
+.container,
+.notes-container,
+.notes-content,
+.oop-sidebar,
+.oop-main-content,
+.category-card {
+    background: rgba(255, 255, 255, 0.97) !important;
+    color: #1e293b !important;
+    backdrop-filter: blur(1px);
+}
+
+/* AI Code Snippets Styling */
+pre {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+    overflow-x: auto;
+    font-size: 14px;
+    margin-top: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+code {
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* All themes — profile text always white */
+.theme-dark .profile-container *,
+.theme-ocean .profile-container *,
+.theme-forest .profile-container * {
+    --profile-text: rgba(255, 255, 255, 0.90);
+    --profile-muted: rgba(255, 255, 255, 0.60);
+    --profile-card-bg: rgba(255, 255, 255, 0.08);
+    --profile-border: rgba(255, 255, 255, 0.15);
+}
+
+/* Ocean theme accent overrides */
+.theme-ocean .metric-box:nth-child(1) div:first-child {
+    color: #7dd3fc !important;
+}
+
+.theme-ocean .metric-box:nth-child(2) div:first-child {
+    color: #6ee7b7 !important;
+}
+
+/* Forest theme accent overrides */
+.theme-forest .metric-box:nth-child(1) div:first-child {
+    color: #86efac !important;
+}
+
+.theme-forest .metric-box:nth-child(2) div:first-child {
+    color: #fde68a !important;
+}
+
+
+.navbar, .nav, header {
+    padding-bottom: 24px !important;
+    overflow: visible !important;
+    position: relative;
+    z-index: 500;
+}
+.navbar-right {
+    overflow: visible !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.profile-circle-wrapper {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4px;
+}
+.profile-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+    border: 2.5px solid rgba(255, 255, 255, 0.40);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+    line-height: 1;
+    flex-shrink: 0;
+    box-shadow: 0 3px 12px rgba(240, 147, 251, 0.45);
+}
+.profile-circle:hover {
+    transform: scale(1.10);
+    box-shadow: 0 6px 20px rgba(240, 147, 251, 0.60);
+}
+.profile-username-tag {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(240, 147, 251, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 147, 251, 0.30);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.90);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 200;
+    text-align: center;
+}
+.theme-dark .profile-circle {
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 3px 12px rgba(240, 147, 251, 0.50);
+}
+.theme-ocean .profile-circle {
+    border-color: rgba(125, 211, 252, 0.45);
+    box-shadow: 0 3px 12px rgba(240, 147, 251, 0.45);
+}
+.theme-forest .profile-circle {
+    border-color: rgba(134, 239, 172, 0.45);
+    box-shadow: 0 3px 12px rgba(240, 147, 251, 0.45);
+}

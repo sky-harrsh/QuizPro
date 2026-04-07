@@ -48,7 +48,12 @@ xcopy /E /I /Y "%WEBCONTENT_DIR%" "%TOMCAT_WEBAPPS%" > nul
 echo [OK] Files copied to %TOMCAT_WEBAPPS%
 
 echo.
-echo [3/3] Starting Tomcat...
+echo [3/4] Stopping Tomcat if running...
+call "%CATALINA_HOME%\bin\shutdown.bat" 2>nul
+timeout /t 3 /nobreak > nul
+
+echo.
+echo [4/4] Starting Tomcat...
 start "Tomcat" "%CATALINA_HOME%\bin\startup.bat"
 
 echo.
@@ -66,4 +71,3 @@ echo   1. MySQL is running (XAMPP Control Panel - start MySQL)
 echo   2. database.sql was imported into 'quizdb'
 echo   3. DBConnection.java has the correct DB password
 echo =========================================================
-pause

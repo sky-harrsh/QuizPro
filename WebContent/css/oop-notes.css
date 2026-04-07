@@ -1,0 +1,294 @@
+/* OOP Textbook Specific Styles */
+.oop-book-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    color: #2d3748;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Reading Progress Bar */
+.reading-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    z-index: 9999;
+}
+
+.reading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+    width: 0%;
+}
+
+/* Textbook Sidebar */
+.oop-sidebar {
+    width: 320px;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.02);
+}
+
+.oop-sidebar-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.oop-book-tools {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.oop-book-tools button {
+    flex: 1;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.oop-book-tools button:hover {
+    background: #e2e8f0;
+}
+
+.chapter-nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chapter-nav-item {
+    margin-bottom: 6px;
+}
+
+.chapter-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    color: #4a5568;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.chapter-nav-link:hover {
+    background: #f7fafc;
+}
+
+.chapter-nav-link.active {
+    background: #ebf8ff;
+    color: #3182ce;
+    border-left-color: #3182ce;
+    font-weight: 600;
+}
+
+.chapter-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* Textbook Content Area */
+.oop-main-content {
+    flex: 1;
+    padding: 40px 60px;
+    background: #fafafa;
+}
+
+.reading-meta {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Chapter Sections */
+.oop-chapter {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 60px 50px;
+    margin-bottom: 80px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: 50px;
+}
+
+.oop-chapter-header {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.oop-chapter-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h20v20H0z" fill="none"/><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+}
+
+.chapter-num {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.oop-chapter-header h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+/* Textbook Text Paragraphs */
+.oop-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #334155;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Subheadings */
+.oop-subheading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* Code Blocks */
+.oop-dry-run {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 25px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 30px 0;
+    border-left: 5px solid #10b981;
+    position: relative;
+}
+
+.oop-dry-run::before {
+    content: "■ Terminal / Execution Trace";
+    display: block;
+    color: #a3a3a3;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/* SVG Containers */
+.oop-diagram-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Summary Card */
+.oop-summary-card {
+    background: #eff6ff;
+    border-left: 6px solid #3b82f6;
+    padding: 30px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 50px;
+}
+
+.oop-summary-card h3 {
+    margin-top: 0;
+    color: #1e40af;
+    font-size: 1.3rem;
+}
+
+.oop-summary-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.oop-summary-card li {
+    margin-bottom: 10px;
+    color: #1e3a8a;
+    font-size: 1.05rem;
+}
+
+/* Highlight for search */
+.oop-highlight {
+    background: #fef08a;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+/* Print CSS */
+@media print {
+
+    .oop-sidebar,
+    .reading-progress-container,
+    .oop-book-tools,
+    .btn-back,
+    .btn-top {
+        display: none !important;
+    }
+
+    .oop-book-container {
+        display: block;
+    }
+
+    .oop-chapter {
+        box-shadow: none;
+        page-break-after: always;
+        padding: 0;
+        margin: 0 0 40px 0;
+    }
+
+    .oop-main-content {
+        padding: 0;
+        background: transparent;
+    }
+}

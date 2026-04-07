@@ -1,0 +1,601 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --theme-core: #2b6cb0;
+  --theme-oop: #2f855a;
+  --theme-advanced: #6b46c1;
+  --theme-misc: #c05621;
+  
+  --bg-color: #f7fafc;
+  --card-bg: #ffffff;
+  --text-main: #2d3748;
+  --text-muted: #718096;
+  --border-color: #e2e8f0;
+  
+  --active-theme: var(--theme-core); /* Default, overridden in JSP */
+}
+
+/* Base resets and layout */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* offset for fixed headers or spacing */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Gradient Header */
+.notes-header {
+  background: linear-gradient(135deg, var(--active-theme), #1a202c);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.notes-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.notes-header p {
+  margin-top: 0.5rem;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.btn-back {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.btn-back:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Main Layout */
+.notes-container {
+  display: flex;
+  flex: 1;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 2rem;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Sidebar */
+.notes-sidebar {
+  flex: 0 0 250px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  padding: 1.5rem 1rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.category-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: var(--text-main);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.category-tab i {
+  font-size: 1.25rem;
+  width: 24px;
+  text-align: center;
+}
+
+.category-tab:hover {
+  background: #edf2f7;
+}
+
+.category-tab.active {
+  background: var(--active-theme);
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.category-tab.active i {
+  color: #fff !important;
+}
+
+/* Content Area */
+.notes-content {
+  flex: 1;
+  min-width: 0; 
+}
+
+/* Topic Card */
+.topic-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid var(--active-theme);
+}
+
+.topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.topic-title {
+  color: var(--active-theme);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.topic-explanation {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+/* Diagram Box */
+.diagram-container {
+  border: 1px solid var(--border-color);
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.diagram-badge {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Dry Run Trace - Terminal Style */
+.dry-run-container {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #d4d4d4;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.dry-run-container::before {
+  content: " Terminal_";
+  display: block;
+  color: #858585;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: #d4d4d4;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Quiz CTA */
+.quiz-cta {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f7fafc, var(--border-color));
+  border-radius: 12px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--active-theme);
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  filter: brightness(1.1);
+}
+
+/* Floating Top Button */
+.btn-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: var(--active-theme);
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0; /* Hidden by default */
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.btn-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-top:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notes-container {
+    flex-direction: column;
+  }
+  .notes-sidebar {
+    width: 100%;
+    position: static;
+    flex: none;
+  }
+}
+/* OOP Textbook Specific Styles */
+.oop-book-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    color: #2d3748;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Reading Progress Bar */
+.reading-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    z-index: 9999;
+}
+
+.reading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+    width: 0%;
+}
+
+/* Textbook Sidebar */
+.oop-sidebar {
+    width: 320px;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.02);
+}
+
+.oop-sidebar-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.oop-book-tools {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.oop-book-tools button {
+    flex: 1;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.oop-book-tools button:hover {
+    background: #e2e8f0;
+}
+
+.chapter-nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chapter-nav-item {
+    margin-bottom: 6px;
+}
+
+.chapter-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    color: #4a5568;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.chapter-nav-link:hover {
+    background: #f7fafc;
+}
+
+.chapter-nav-link.active {
+    background: #ebf8ff;
+    color: #3182ce;
+    border-left-color: #3182ce;
+    font-weight: 600;
+}
+
+.chapter-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* Textbook Content Area */
+.oop-main-content {
+    flex: 1;
+    padding: 40px 60px;
+    background: #fafafa;
+}
+
+.reading-meta {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Chapter Sections */
+.oop-chapter {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 60px 50px;
+    margin-bottom: 80px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: 50px;
+}
+
+.oop-chapter-header {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.oop-chapter-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h20v20H0z" fill="none"/><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+}
+
+.chapter-num {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.oop-chapter-header h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+/* Textbook Text Paragraphs */
+.oop-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #334155;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Subheadings */
+.oop-subheading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* Code Blocks */
+.oop-dry-run {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 25px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 30px 0;
+    border-left: 5px solid #10b981;
+    position: relative;
+}
+
+.oop-dry-run::before {
+    content: "â–  Terminal / Execution Trace";
+    display: block;
+    color: #a3a3a3;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/* SVG Containers */
+.oop-diagram-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Summary Card */
+.oop-summary-card {
+    background: #eff6ff;
+    border-left: 6px solid #3b82f6;
+    padding: 30px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 50px;
+}
+
+.oop-summary-card h3 {
+    margin-top: 0;
+    color: #1e40af;
+    font-size: 1.3rem;
+}
+
+.oop-summary-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.oop-summary-card li {
+    margin-bottom: 10px;
+    color: #1e3a8a;
+    font-size: 1.05rem;
+}
+
+/* Highlight for search */
+.oop-highlight {
+    background: #fef08a;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+/* Print CSS */
+@media print {
+
+    .oop-sidebar,
+    .reading-progress-container,
+    .oop-book-tools,
+    .btn-back,
+    .btn-top {
+        display: none !important;
+    }
+
+    .oop-book-container {
+        display: block;
+    }
+
+    .oop-chapter {
+        box-shadow: none;
+        page-break-after: always;
+        padding: 0;
+        margin: 0 0 40px 0;
+    }
+
+    .oop-main-content {
+        padding: 0;
+        background: transparent;
+    }
+}
