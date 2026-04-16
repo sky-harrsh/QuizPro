@@ -54,18 +54,18 @@ pre, code { background: #1e293b; color: #f8fafc; padding: 10px; border-radius: 5
 </head>
 <body>
 
-<div class="nav" style="padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-    <a href="dashboard.jsp" title="Go to Dashboard" style="text-decoration: none; color: inherit;">
-        <h2 style="margin:0;"><i class="fa-solid fa-graduation-cap"></i> QuizPro</h2>
+<div class="nav" style="padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <a href="dashboard.jsp" title="Go to Dashboard" style="text-decoration: none;">
+        <h2 style="margin:0; color: #ffffff;"><i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i> QuizPro</h2>
     </a>
     <div class="navbar-right">
-    <button onclick="cycleTheme()" id="theme-btn" class="btn" style="background:transparent; border:1px solid #ddd; padding: 5px 15px; border-radius: 5px; color: inherit; font-weight: bold;">🎨 Dark</button>
-    <a href="LogoutServlet" style="text-decoration: none; color: #e53e3e;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    <button onclick="cycleTheme()" id="theme-btn" class="btn" style="color: #ffffff; border: 1px solid rgba(255,255,255,0.4); background: transparent; padding: 5px 15px; border-radius: 5px; font-weight: bold;">🎨 Dark</button>
+    <a href="LogoutServlet" style="color: #ff6b6b; text-decoration:none;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
     <div class="profile-circle-wrapper">
         <a href="ProfileServlet" class="profile-circle" title="View Profile">
             <%= initial %>
         </a>
-        <div class="profile-username-tag"><%= username %></div>
+        <div class="profile-username-tag" style="color: #ffffff;"><%= username %></div>
     </div>
 </div></div>
 
@@ -82,7 +82,7 @@ pre, code { background: #1e293b; color: #f8fafc; padding: 10px; border-radius: 5
         <div class="reading-progress-bar" id="readingProgressBar"></div>
     </div>
 
-    <div class="oop-book-container">
+    <div class="oop-book-container" style="background: #ffffff;">
         <aside class="oop-sidebar">
             <div class="oop-sidebar-header">
                 <span>&#128218; Chapters</span>

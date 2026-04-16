@@ -73,11 +73,11 @@
 <body>
     <div class="nav-header">
         <a href="dashboard.jsp" title="Go to Dashboard" style="text-decoration: none; color: white;">
-            <h2 style="margin:0; font-size: 24px;"><i class="fa-solid fa-graduation-cap"></i> QuizPro</h2>
+            <h2 style="margin:0; font-size: 24px; color: #ffffff;"><i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i> QuizPro</h2>
         </a>
         <div style="display: flex; align-items: center; gap: 15px;">
-            
-            <a href="LogoutServlet" style="color: white; text-decoration: none;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+            <button onclick="cycleTheme()" id="theme-btn" class="btn" style="background:transparent; border:1px solid; padding: 5px 15px; border-radius: 5px; font-weight: bold; color: #ffffff; border-color: rgba(255,255,255,0.3);">🎨 Dark</button>
+            <a href="LogoutServlet" style="color: #ff6b6b; text-decoration: none;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
         </div>
     </div>
 

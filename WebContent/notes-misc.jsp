@@ -37,7 +37,7 @@
 .tab-btn:hover { background: #f1f5f9; transform: translateY(-2px); }
 .tab-btn.active { background: #e0e7ff; color: #4338ca; border-color: #4338ca; }
 .notes-container { max-width: 900px; margin: 0 auto; padding: 20px; }
-.chapter-card { background: var(--bg-card, white); color: var(--text-color, #1e293b); border-radius: 8px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.chapter-card { background: #ffffff; color: var(--text-color, #1e293b); border-radius: 8px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 .chapter-title { color: var(--text-color, #1e293b); border-bottom: 2px solid var(--border-color, #e2e8f0); padding-bottom: 10px; margin-top: 0; }
 pre, code { background: #1e293b; color: #f8fafc; padding: 10px; border-radius: 5px; overflow-x: auto; font-family: monospace; display: block;}
 .take-quiz-btn { display: block; text-align: center; margin: 40px auto; padding: 15px 30px; background: #4f46e5; color: white; border-radius: 30px; text-decoration: none; font-size: 1.2rem; font-weight: bold; width: fit-content; transition: background 0.3s; }
@@ -47,13 +47,13 @@ pre, code { background: #1e293b; color: #f8fafc; padding: 10px; border-radius: 5
 </head>
 <body>
 
-<div class="nav">
-    <a href="dashboard.jsp" title="Go to Dashboard" style="text-decoration: none; color: inherit;">
-        <h2 style="margin:0;"><i class="fa-solid fa-graduation-cap"></i> QuizPro</h2>
+<div class="nav" style="padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <a href="dashboard.jsp" title="Go to Dashboard" style="text-decoration: none;">
+        <h2 style="margin:0; color: #ffffff;"><i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i> QuizPro</h2>
     </a>
     <div class="navbar-right">
-    <button onclick="cycleTheme()" id="theme-btn" class="btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); padding: 5px 15px; border-radius: 5px; color: inherit; font-weight: bold;">🎨 Dark</button>
-    <a href="LogoutServlet"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    <button onclick="cycleTheme()" id="theme-btn" class="btn" style="color: #ffffff; border: 1px solid rgba(255,255,255,0.4); background: transparent; padding: 5px 15px; border-radius: 5px; font-weight: bold;">🎨 Dark</button>
+    <a href="LogoutServlet" style="color: #ff6b6b; text-decoration:none;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
     <%
         String username = "";
         String initial = "U";
@@ -68,7 +68,7 @@ pre, code { background: #1e293b; color: #f8fafc; padding: 10px; border-radius: 5
         <a href="ProfileServlet" class="profile-circle" title="View Profile">
             <%= initial %>
         </a>
-        <div class="profile-username-tag"><%= username %></div>
+        <div class="profile-username-tag" style="color: #ffffff;"><%= username %></div>
     </div>
 </div></div>
 
