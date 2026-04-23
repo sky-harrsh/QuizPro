@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class SetupDB {
+public class DatabaseSetup {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/quizdb?useSSL=false&allowPublicKeyRetrieval=true";
         try (Connection c = DriverManager.getConnection(url, "root", "176023");

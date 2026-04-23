@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-public class CheckQuizzes {
+public class VerifyQuestions {
     public static void main(String[] args) {
         String URL = "jdbc:mysql://localhost:3306/quizdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8";
         String USERNAME = "root";

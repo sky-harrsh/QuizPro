@@ -68,6 +68,6 @@ echo.
 echo =========================================================
 echo  Done! If login fails, check:
 echo   1. MySQL is running (XAMPP Control Panel - start MySQL)
-echo   2. database.sql was imported into 'quizdb'
+echo   2. sql\01_create_schema_and_seed.sql was imported into 'quizdb'
 echo   3. DBConnection.java has the correct DB password
 echo =========================================================

@@ -30,7 +30,7 @@
 1.  Ensure MySQL is running on `localhost:3306`.
 2.  Import the schema:
     ```sh
-    mysql -u root -p < database.sql
+    mysql -u root -p < sql/01_create_schema_and_seed.sql
     ```
 3.  Verify connection settings in `src/db/DBConnection.java`.
 
@@ -48,11 +48,47 @@ To enable AI-powered question generation:
 
 ## 📂 Project Structure
 
-- `src/`: Java source files (Servlets, Database, AI logic).
-- `WebContent/`: Web assets (JSP files, CSS/JS, images).
-- `database.sql`: Central database schema and initial questions.
-- `scripts/`: Maintenance and utility Python scripts.
-- `RunQuizSystem.bat`: One-click script to compile, build, and deploy to your local Tomcat instance.
+```text
+OnlineQuizSystem/
+├── src/
+│   ├── db/DBConnection.java
+│   ├── LoginServlet.java
+│   ├── LogoutServlet.java
+│   ├── QuizServlet.java
+│   ├── ResultServlet.java
+│   ├── NotesServlet.java
+│   └── ProfileServlet.java
+├── WebContent/
+│   ├── WEB-INF/
+│   ├── css/
+│   ├── js/
+│   ├── dashboard.jsp
+│   ├── quiz.jsp
+│   ├── result.jsp
+│   ├── login.jsp
+│   ├── notes-core.jsp
+│   ├── notes-oop.jsp
+│   ├── notes-advanced.jsp
+│   ├── notes-misc.jsp
+│   ├── flashcards.jsp
+│   └── profile.jsp
+├── sql/
+│   ├── 01_create_schema_and_seed.sql
+│   ├── 02_alter_tables_and_code_questions.sql
+│   └── 03_insert_extra_questions.sql
+├── scripts/
+│   ├── generate_notes_oop.py
+│   ├── fix_jsp_encoding.py
+│   ├── fix_notes_layout.py
+│   ├── fix_navbar_profile.py
+│   ├── fix_navbar_order_and_css.py
+│   ├── inject_navbar_html.py
+│   └── generate_all_jsp_pages.py
+├── DatabaseSetup.java
+├── VerifyQuestions.java
+├── RunQuizSystem.bat
+└── README.md
+```
 
 ---
 
