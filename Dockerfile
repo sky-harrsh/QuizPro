@@ -15,8 +15,8 @@ FROM tomcat:9.0-jre17-temurin
 # Remove default Tomcat ROOT application
 RUN rm -rf /usr/local/tomcat/webapps/ROOT /usr/local/tomcat/webapps/ROOT.war
 
-# Copy generated WAR artifact as ROOT.war
-COPY --from=builder /app/target/OnlineQuizSystem.war /usr/local/tomcat/webapps/ROOT.war
+# Copy generated WAR artifact as ROOT.war (wildcard handles any artifact name)
+COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
 # Copy entrypoint script for dynamic PORT binding (Render support)
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
