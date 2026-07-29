@@ -51,41 +51,42 @@ To enable AI-powered question generation:
 ```text
 OnlineQuizSystem/
 ├── src/
-│   ├── db/DBConnection.java
-│   ├── LoginServlet.java
-│   ├── LogoutServlet.java
-│   ├── QuizServlet.java
-│   ├── ResultServlet.java
-│   ├── NotesServlet.java
-│   └── ProfileServlet.java
+│   ├── db/
+│   │   └── DBConnection.java
+│   ├── model/
+│   │   └── Question.java
+│   └── servlet/
+│       ├── AIQuestionGenerator.java
+│       ├── FlashcardServlet.java
+│       ├── LoginServlet.java
+│       ├── LogoutServlet.java
+│       ├── NotesServlet.java
+│       ├── ProfileServlet.java
+│       ├── QuizServlet.java
+│       ├── RegisterServlet.java
+│       └── ResultServlet.java
 ├── WebContent/
 │   ├── WEB-INF/
+│   │   ├── classes/
+│   │   ├── lib/
+│   │   ├── config.properties
+│   │   └── web.xml
 │   ├── css/
 │   ├── js/
 │   ├── dashboard.jsp
-│   ├── quiz.jsp
-│   ├── result.jsp
-│   ├── login.jsp
-│   ├── notes-core.jsp
-│   ├── notes-oop.jsp
-│   ├── notes-advanced.jsp
-│   ├── notes-misc.jsp
 │   ├── flashcards.jsp
-│   └── profile.jsp
+│   ├── index.jsp
+│   ├── login.jsp
+│   ├── notes-advanced.jsp
+│   ├── notes-core.jsp
+│   ├── notes-misc.jsp
+│   ├── notes-oop.jsp
+│   ├── profile.jsp
+│   ├── quiz.jsp
+│   ├── register.jsp
+│   └── result.jsp
 ├── sql/
-│   ├── 01_create_schema_and_seed.sql
-│   ├── 02_alter_tables_and_code_questions.sql
-│   └── 03_insert_extra_questions.sql
-├── scripts/
-│   ├── generate_notes_oop.py
-│   ├── fix_jsp_encoding.py
-│   ├── fix_notes_layout.py
-│   ├── fix_navbar_profile.py
-│   ├── fix_navbar_order_and_css.py
-│   ├── inject_navbar_html.py
-│   └── generate_all_jsp_pages.py
-├── DatabaseSetup.java
-├── VerifyQuestions.java
+│   └── 01_create_schema_and_seed.sql
 ├── RunQuizSystem.bat
 └── README.md
 ```
