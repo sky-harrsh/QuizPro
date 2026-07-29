@@ -1,0 +1,14 @@
+target/
+.git/
+.gitignore
+.idea/
+.vscode/
+apache-tomcat*/
+logs/
+temp/
+work/
+*.log
+*.jar
+*.war
+*.zip
+RunQuizSystem.bat

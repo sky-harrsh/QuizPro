@@ -107,5 +107,24 @@ This script will:
 - Copy web content to the Tomcat webapps directory.
 - Restart the Tomcat server automatically.
 
+## 🌐 Cloud Deployment on Render (Docker)
+
+This repository includes a production-ready **multi-stage Dockerfile** designed specifically for **Render**.
+
+### 1. Deployment Steps on Render
+1. Push this repository to **GitHub**.
+2. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** → **Web Service**.
+3. Connect your GitHub repository (`QuizPro`).
+4. Select **Docker** as the Runtime Environment (Render automatically detects `Dockerfile`).
+5. Add your database connection Environment Variables (e.g. from Aiven, PlanetScale, Railway, or CleverCloud MySQL):
+   - `DB_HOST` or `MYSQLHOST`
+   - `DB_PORT` or `MYSQLPORT` (Default: `3306`)
+   - `DB_NAME` or `MYSQLDATABASE` (Default: `quizdb`)
+   - `DB_USER` or `MYSQLUSER` (Default: `root`)
+   - `DB_PASSWORD` or `MYSQLPASSWORD`
+6. Click **Deploy Web Service**.
+
+Render will automatically build the WAR via Maven (JDK 17), deploy Tomcat 9, bind to Render's dynamic `$PORT`, and bring your web application live!
+
 ---
 *Created with ❤️ for Java Enthusiasts.*
