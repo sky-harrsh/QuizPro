@@ -7,8 +7,8 @@ echo =========================================================
 
 REM ---- Paths (edit these if your setup differs) ----
 set "PROJECT_DIR=%~dp0"
-set "SRC_DIR=%PROJECT_DIR%src"
-set "WEBCONTENT_DIR=%PROJECT_DIR%WebContent"
+set "SRC_DIR=%PROJECT_DIR%src\main\java"
+set "WEBCONTENT_DIR=%PROJECT_DIR%src\main\webapp"
 set "CLASSES_DIR=%WEBCONTENT_DIR%\WEB-INF\classes"
 set "LIB_DIR=%WEBCONTENT_DIR%\WEB-INF\lib"
 set "TOMCAT_WEBAPPS=C:\xampp\tomcat\webapps\OnlineQuizSystem"

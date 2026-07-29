@@ -51,40 +51,42 @@ To enable AI-powered question generation:
 ```text
 OnlineQuizSystem/
 ├── src/
-│   ├── db/
-│   │   └── DBConnection.java
-│   ├── model/
-│   │   └── Question.java
-│   └── servlet/
-│       ├── AIQuestionGenerator.java
-│       ├── FlashcardServlet.java
-│       ├── LoginServlet.java
-│       ├── LogoutServlet.java
-│       ├── NotesServlet.java
-│       ├── ProfileServlet.java
-│       ├── QuizServlet.java
-│       ├── RegisterServlet.java
-│       └── ResultServlet.java
-├── WebContent/
-│   ├── WEB-INF/
-│   │   ├── classes/
-│   │   ├── lib/
-│   │   ├── config.properties
-│   │   └── web.xml
-│   ├── css/
-│   ├── js/
-│   ├── dashboard.jsp
-│   ├── flashcards.jsp
-│   ├── index.jsp
-│   ├── login.jsp
-│   ├── notes-advanced.jsp
-│   ├── notes-core.jsp
-│   ├── notes-misc.jsp
-│   ├── notes-oop.jsp
-│   ├── profile.jsp
-│   ├── quiz.jsp
-│   ├── register.jsp
-│   └── result.jsp
+│   └── main/
+│       ├── java/
+│       │   ├── db/
+│       │   │   └── DBConnection.java
+│       │   ├── model/
+│       │   │   └── Question.java
+│       │   └── servlet/
+│       │       ├── AIQuestionGenerator.java
+│       │       ├── FlashcardServlet.java
+│       │       ├── LoginServlet.java
+│       │       ├── LogoutServlet.java
+│       │       ├── NotesServlet.java
+│       │       ├── ProfileServlet.java
+│       │       ├── QuizServlet.java
+│       │       ├── RegisterServlet.java
+│       │       └── ResultServlet.java
+│       └── webapp/
+│           ├── WEB-INF/
+│           │   ├── classes/
+│           │   ├── lib/
+│           │   ├── config.properties
+│           │   └── web.xml
+│           ├── css/
+│           ├── js/
+│           ├── dashboard.jsp
+│           ├── flashcards.jsp
+│           ├── index.jsp
+│           ├── login.jsp
+│           ├── notes-advanced.jsp
+│           ├── notes-core.jsp
+│           ├── notes-misc.jsp
+│           ├── notes-oop.jsp
+│           ├── profile.jsp
+│           ├── quiz.jsp
+│           ├── register.jsp
+│           └── result.jsp
 ├── sql/
 │   └── 01_create_schema_and_seed.sql
 ├── pom.xml
