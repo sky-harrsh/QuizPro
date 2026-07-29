@@ -11,6 +11,8 @@ public class DBConnection {
     }
 
     public static Connection getConnection() {
+        // In production (Render + Railway), these env vars are set automatically.
+        // The fallback values apply only during local development (XAMPP).
         String dbHost = getEnv("MYSQLHOST", getEnv("DB_HOST", "localhost"));
         String dbPort = getEnv("MYSQLPORT", getEnv("DB_PORT", "3306"));
         String dbName = getEnv("MYSQLDATABASE", getEnv("DB_NAME", "quizdb"));

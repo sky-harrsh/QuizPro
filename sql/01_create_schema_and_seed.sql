@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS results (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     score INT NOT NULL,
+    total_questions INT DEFAULT 15,
+    category VARCHAR(50) DEFAULT 'general',
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
