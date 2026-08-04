@@ -11,6 +11,13 @@ import java.util.Scanner;
 
 public class AIQuestionGenerator {
     private static String getApiKey(javax.servlet.ServletContext context) {
+        // 1. Check environment variable first (production / Render)
+        String envKey = System.getenv("ANTHROPIC_API_KEY");
+        if (envKey != null && !envKey.trim().isEmpty()
+                && !envKey.trim().equals("YOUR_ACTUAL_ANTHROPIC_KEY_HERE")) {
+            return envKey.trim();
+        }
+        // 2. Fall back to config.properties (local development)
         if (context == null)
             return "";
         try {

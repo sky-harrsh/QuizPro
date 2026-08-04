@@ -158,7 +158,8 @@ public class ProfileServlet extends HttpServlet {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 // Note: configure api key later if needed, but gracefully handle no key
-                conn.setRequestProperty("x-api-key", ""); 
+                conn.setRequestProperty("x-api-key", System.getenv("ANTHROPIC_API_KEY") != null
+                        ? System.getenv("ANTHROPIC_API_KEY").trim() : "");
                 conn.setRequestProperty("anthropic-version", "2023-06-01");
                 conn.setRequestProperty("content-type", "application/json");
                 conn.setDoOutput(true);

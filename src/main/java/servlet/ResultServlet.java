@@ -19,6 +19,13 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ResultServlet")
 public class ResultServlet extends HttpServlet {
     private static String getApiKey(HttpServlet servlet) {
+        // 1. Check environment variable first (production / Render)
+        String envKey = System.getenv("ANTHROPIC_API_KEY");
+        if (envKey != null && !envKey.trim().isEmpty()
+                && !envKey.trim().equals("YOUR_ACTUAL_ANTHROPIC_KEY_HERE")) {
+            return envKey.trim();
+        }
+        // 2. Fall back to config.properties (local development)
         try {
             String path = servlet.getServletContext()
                                  .getRealPath("/WEB-INF/config.properties");
