@@ -1,5 +1,15 @@
 # QuizPro – Advanced Java Learning & Quiz Arena
 
+A Java-based online quiz application using JSP, Servlets, MySQL and Apache Tomcat.
+
+## 🚀 Live Demo
+
+👉 https://quizpro-5s5x.onrender.com
+
+## 💻 Source Code
+
+👉 https://github.com/sky-harrsh/QuizPro
+
 **QuizPro** is a modern, high-performance Java web application designed to help engineering students and professionals master Java through interactive quizzes and comprehensive study materials.
 
 ---
