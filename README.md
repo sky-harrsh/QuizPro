@@ -1,140 +1,85 @@
-# QuizPro – Advanced Java Learning & Quiz Arena
+# QuizPro
 
-A Java-based online quiz application using JSP, Servlets, MySQL and Apache Tomcat.
+A Java web app for practicing Java through categorized quizzes, study notes, flashcards, and results.
 
-## 🚀 Live Demo
+Live site: https://quizpro-5s5x.onrender.com  
+Source: https://github.com/sky-harrsh/QuizPro
 
-👉 https://quizpro-5s5x.onrender.com
+## Features
 
-## 💻 Source Code
+- Quizzes for Core Java, OOP, Advanced Java, and Miscellaneous topics.
+- Seeded practice questions, study notes, and flashcards.
+- Result summaries and answer review.
+- Optional AI-generated questions when an Anthropic API key is configured.
 
-👉 https://github.com/sky-harrsh/QuizPro
+## Stack
 
-**QuizPro** is a modern, high-performance Java web application designed to help engineering students and professionals master Java through interactive quizzes and comprehensive study materials.
+- Java 17, JSP, Servlets, and JDBC
+- MySQL Connector/J 9.2.0
+- Maven and Apache Tomcat 9
+- MySQL-compatible database; the current production deployment uses TiDB Cloud Starter.
+- Docker deployment on Render
 
----
+## Database setup
 
-## 🚀 Key Features
+The SQL setup script is sql/01_create_schema_and_seed.sql. It creates the quizdb database and the users, questions, and results tables, then inserts 60 sample questions (15 per category).
 
-- **Dynamic Quiz Engine**: A React-powered, state-aware interface with real-time feedback and navigation palette.
-- **Categorized Learning**: Distinct tracks for **Core Java**, **Object-Oriented Programming (OOP)**, **Advanced Java**, and **Miscellaneous** topics.
-- **AI-Powered Questions**: Integrated Antropic API to generate fresh, relevant questions on-the-fly.
-- **Engineering-Level Notes**: Detailed vertical-scroll study guides with SVG diagrams, code snippets, and progress tracking.
-- **Unified Branding**: A sleek, modern UI with a dynamic Dark/Light mode and glassmorphism design elements.
-- **Performance Results**: Instant scoring with "badge" grading and detailed answer explanation links.
+For a fresh database, run the script once. It uses CREATE TABLE IF NOT EXISTS, but its question INSERT is not idempotent; running it again adds duplicate questions.
 
----
+For a local MySQL-compatible server, from the repository root:
 
-## 🛠️ Tech Stack
+~~~sh
+mysql -u root -p < sql/01_create_schema_and_seed.sql
+~~~
 
-- **Backend**: Java Servlets (Java EE), JDBC
-- **Frontend**: JSP (JavaServer Pages), Tailwind CSS v3, React 18, FontAwesome 6
-- **Database**: MySQL 8.0+
-- **APIs**: Anthropic Claude API (for AI question generation)
+For TiDB Cloud Starter, select the main branch and quizdb in the TiDB Cloud SQL Editor, then run the script. Public-endpoint connections require TLS.
 
----
+## Connection configuration
 
-## ⚙️ Setup Instructions
+DBConnection reads these environment variables:
 
-### 1. Database Configuration
-1.  Ensure MySQL is running on `localhost:3306`.
-2.  Import the schema:
-    ```sh
-    mysql -u root -p < sql/01_create_schema_and_seed.sql
-    ```
-3.  Verify connection settings in `src/db/DBConnection.java`.
+- MYSQLHOST — database host
+- MYSQLPORT — database port (TiDB Cloud Starter uses 4000)
+- MYSQLDATABASE — database name (quizdb)
+- MYSQLUSER — database user, including the TiDB instance prefix when required
+- MYSQLPASSWORD — database password
 
-### 2. Dependencies
-Place the following JAR files in `WebContent/WEB-INF/lib`:
-- `mysql-connector-java.jar` (MySQL JDBC Driver)
-- `servlet-api.jar` (Provided by your server, e.g., Tomcat/lib)
+Do not commit passwords or put them in this README. Store them in your deployment platform's secret environment-variable settings.
 
-### 3. AI Features (Optional)
-To enable AI-powered question generation:
-1.  Obtain an API key from Claude (Anthropic).
-2.  Add it to `WebContent/WEB-INF/config.properties`.
+The JDBC URL uses sslMode=VERIFY_IDENTITY so the server certificate and hostname are validated. TiDB Cloud Starter supports TLS 1.2 and 1.3; Java uses its system root certificates, so a separate CA file is not normally required for Starter. The local database must also support certificate-validated TLS.
 
----
+## Build locally
 
-## 📂 Project Structure
+Requires JDK 17 or newer and Maven 3.8 or newer. Build the WAR from the repository root:
 
-```text
-OnlineQuizSystem/
-├── src/
-│   └── main/
-│       ├── java/
-│       │   ├── db/
-│       │   │   └── DBConnection.java
-│       │   ├── model/
-│       │   │   └── Question.java
-│       │   └── servlet/
-│       │       ├── AIQuestionGenerator.java
-│       │       ├── FlashcardServlet.java
-│       │       ├── LoginServlet.java
-│       │       ├── LogoutServlet.java
-│       │       ├── NotesServlet.java
-│       │       ├── ProfileServlet.java
-│       │       ├── QuizServlet.java
-│       │       ├── RegisterServlet.java
-│       │       └── ResultServlet.java
-│       └── webapp/
-│           ├── WEB-INF/
-│           │   ├── classes/
-│           │   ├── lib/
-│           │   ├── config.properties
-│           │   └── web.xml
-│           ├── css/
-│           ├── js/
-│           ├── dashboard.jsp
-│           ├── flashcards.jsp
-│           ├── index.jsp
-│           ├── login.jsp
-│           ├── notes-advanced.jsp
-│           ├── notes-core.jsp
-│           ├── notes-misc.jsp
-│           ├── notes-oop.jsp
-│           ├── profile.jsp
-│           ├── quiz.jsp
-│           ├── register.jsp
-│           └── result.jsp
-├── sql/
-│   └── 01_create_schema_and_seed.sql
-├── pom.xml
-├── RunQuizSystem.bat
-└── README.md
-```
+~~~sh
+./mvnw clean package
+~~~
 
----
+On Windows, use:
 
-## 🏃 Running the Project
+~~~bat
+mvnw.cmd clean package
+~~~
 
-Use the provided automation script:
-```sh
-.\RunQuizSystem.bat
-```
-This script will:
-- Compile all Java files.
-- Copy web content to the Tomcat webapps directory.
-- Restart the Tomcat server automatically.
+The WAR is built as target/OnlineQuizSystem.war. For local runtime use, configure the database environment variables before launching Tomcat.
 
-## 🌐 Cloud Deployment on Render (Docker)
+## Deploy on Render
 
-This repository includes a production-ready **multi-stage Dockerfile** designed specifically for **Render**.
+The repository includes a Dockerfile for Render. Connect the GitHub repository to a Docker web service, then configure the five MYSQL variables above in the service's Environment settings. Keep MYSQLPASSWORD secret. The service builds with Java 17 and Tomcat 9.
 
-### 1. Deployment Steps on Render
-1. Push this repository to **GitHub**.
-2. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** → **Web Service**.
-3. Connect your GitHub repository (`QuizPro`).
-4. Select **Docker** as the Runtime Environment (Render automatically detects `Dockerfile`).
-5. Add your database connection Environment Variables (e.g. from Aiven, PlanetScale, Railway, or CleverCloud MySQL):
-   - `DB_HOST` or `MYSQLHOST`
-   - `DB_PORT` or `MYSQLPORT` (Default: `3306`)
-   - `DB_NAME` or `MYSQLDATABASE` (Default: `quizdb`)
-   - `DB_USER` or `MYSQLUSER` (Default: `root`)
-   - `DB_PASSWORD` or `MYSQLPASSWORD`
-6. Click **Deploy Web Service**.
+With automatic deploys enabled, commits to the configured branch start a new build and deployment. Keep database credentials out of GitHub and use only database services whose pricing and limits fit your account.
 
-Render will automatically build the WAR via Maven (JDK 17), deploy Tomcat 9, bind to Render's dynamic `$PORT`, and bring your web application live!
+## Optional AI features
 
----
-*Created with ❤️ for Java Enthusiasts.*
+Set ANTHROPIC_API_KEY in the deployment environment to enable AI-generated quiz questions and answer explanations. Without it, the seeded database questions remain available and the core quiz flow does not require an AI API key.
+
+## Project layout
+
+~~~text
+src/main/java/       Java database helper, models, and servlets
+src/main/webapp/     JSP pages, assets, and WEB-INF configuration
+sql/                 database schema and seeded questions
+Dockerfile           multi-stage Maven/Tomcat image for Render
+pom.xml              Maven dependencies and build configuration
+~~~
